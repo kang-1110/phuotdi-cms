@@ -3,14 +3,16 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, theme } from 'antd';
+import { Button, Layout, Menu, Space, theme } from 'antd';
 import { LAYOUT_PAGE_DATA } from './mainLayout.config';
-import { Link, Outlet } from 'react-router';
+import { Link, Outlet, useNavigate } from 'react-router';
+import UserInfoCard from '@/components/UserInfoCard/UserInfoCard';
 
 const { Header, Sider, Content } = Layout;
 
 export const MainLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -19,7 +21,7 @@ export const MainLayout: React.FC = () => {
     <Layout style={{ height: '100vh' }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="w-full h-auto px-4 py-2">
-          <img className="w-full h-auto" src="public/PhuotDiLogo.png" alt="Logo" />
+          <img className="w-32 h-auto" src="/PhuotDiLogo.png" alt="Logo" />
         </div>
         <Menu
           theme="dark"
@@ -27,12 +29,12 @@ export const MainLayout: React.FC = () => {
           defaultSelectedKeys={['1']}
         >{LAYOUT_PAGE_DATA.filter(data => data.isDisplay).map((data) => (
           <Menu.Item key={data.key} icon={React.createElement(data.icon)}>
-            <Link to={data.route}>{data.label}</Link>
+            <Link to={data.route} className="text-lg">{data.label}</Link>
           </Menu.Item>
         ))}</Menu>
       </Sider>
       <Layout style={{ display: 'flex', flexDirection: 'column' }}>
-        <Header style={{ padding: 0, background: colorBgContainer, flexShrink: 0 }}>
+        <Header className="flex items-center justify-between" style={{ padding: 0, background: colorBgContainer, flexShrink: 0 }}>
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -43,6 +45,15 @@ export const MainLayout: React.FC = () => {
               height: 64,
             }}
           />
+          <Space className="flex-row items-center pr-4">
+            <UserInfoCard
+              id="1"
+              name="Nguyễn Văn A"
+              email="nguyenvana@example.com"
+              avatarUrl="https://randomuser.me/api/portraits/men/1.jpg"
+              onLogout={() => navigate('/login')}
+              onClickAvatar={() => console.log("Avatar clicked")} />
+          </Space>
         </Header>
         <Content
           style={{

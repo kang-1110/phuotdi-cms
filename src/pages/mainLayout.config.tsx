@@ -1,4 +1,4 @@
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, AreaChartOutlined, ProfileOutlined, CustomerServiceOutlined, SettingOutlined } from "@ant-design/icons";
 import type { AntdIconProps } from "@ant-design/icons/es/components/AntdIcon";
 
 interface PageData {
@@ -14,21 +14,21 @@ export const LAYOUT_PAGE_DATA: PageData[] = [
         key: "dashboard",
         label: "Dashboard",
         route: "/dashboard",
-        icon: UserOutlined,
+        icon: AreaChartOutlined,
         isDisplay: true
     },
     {
         key: "location-blogs",
         label: "Bài viết",
         route: "/location-blogs",
-        icon: UserOutlined,
+        icon: ProfileOutlined,
         isDisplay: true
     },
     {
         key: "customers",
         label: "Khách hàng",
         route: "/customers",
-        icon: UserOutlined,
+        icon: CustomerServiceOutlined,
         isDisplay: true
     },
     {
@@ -42,7 +42,7 @@ export const LAYOUT_PAGE_DATA: PageData[] = [
         key: "system",
         label: "Hệ thống",
         route: "/system",
-        icon: UserOutlined,
+        icon: SettingOutlined,
         isDisplay: true
     }
 ];

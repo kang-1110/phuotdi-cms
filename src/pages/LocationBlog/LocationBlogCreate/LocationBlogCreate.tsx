@@ -1,34 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  // useState 
+} from 'react';
 import { Button, Col, Drawer, Form, Input, Row, Select, Space } from 'antd';
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+// import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 
 interface IProps {
   isEdit?: boolean;
   open?: boolean;
   setOpen?: (open: boolean) => void;
 }
-interface Position {
-  lat: number;
-  lng: number;
-}
-// Thiết lập kích thước bản đồ
-const containerStyle = {
-  width: '100%',
-  height: '400px'
-};
+// interface Position {
+//   lat: number;
+//   lng: number;
+// }
+// // Thiết lập kích thước bản đồ
+// const containerStyle = {
+//   width: '100%',
+//   height: '400px'
+// };
 
-// Tọa độ trung tâm mặc định (ví dụ: Quận Bình Thạnh, TP.HCM)
-const center: Position = {
-  lat: 10.8033, 
-  lng: 106.7115
-};
+// // Tọa độ trung tâm mặc định (ví dụ: Quận Bình Thạnh, TP.HCM)
+// const center: Position = {
+//   lat: 10.8033,
+//   lng: 106.7115
+// };
 const LocationBlogCreate: React.FC<IProps> = ({ isEdit = false, open, setOpen = () => { } }: IProps) => {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "YOUR_GOOGLE_MAP_API_KEY" // Thay bằng API Key của bạn
-  });
-    const [selectedPosition, setSelectedPosition] = useState<Position | null>(null);
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: "YOUR_GOOGLE_MAP_API_KEY" // Thay bằng API Key của bạn
+  // });
+  // const [selectedPosition, setSelectedPosition] = useState<Position | null>(null);
 
-    
+
   useEffect(() => {
     console.log("Mounted")
     return () => {
@@ -39,14 +42,14 @@ const LocationBlogCreate: React.FC<IProps> = ({ isEdit = false, open, setOpen = 
   const onClose = () => {
     setOpen(false);
   };
-  const handleMapClick = (event: google.maps.MapMouseEvent) => {
-if (event.latLng) {
-      setSelectedPosition({
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-      });
-    }
-  };
+  // const handleMapClick = (event: google.maps.MapMouseEvent) => {
+  //   if (event.latLng) {
+  //     setSelectedPosition({
+  //       lat: event.latLng.lat(),
+  //       lng: event.latLng.lng(),
+  //     });
+  //   }
+  // };
   return (
     <>
       <Drawer
@@ -114,38 +117,37 @@ if (event.latLng) {
                 />
               </Form.Item>
             </Col>
-    <div>
+            {/* <div>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
         zoom={15}
-        onClick={handleMapClick} // Thêm sự kiện click
+        onClick={handleMapClick}
       >
-        {/* Chỉ hiển thị Marker nếu người dùng đã chọn điểm */}
+
         {selectedPosition && (
           <Marker position={selectedPosition} />
         )}
       </GoogleMap>
 
-      {/* Hiển thị tọa độ đã chọn */}
       {selectedPosition && (
         <div style={{ marginTop: '10px' }}>
           <b>Vị trí đã chọn:</b> 
           Vĩ độ: {selectedPosition.lat.toFixed(6)}, Kinh độ: {selectedPosition.lng.toFixed(6)}
         </div>
       )}
-    </div>
+    </div> */}
           </Row>
           <Row gutter={16}>
             <Col span={24}>
-            <Form.Item
-              name="road"
-              label="Đường đi"
-              rules={[{ required: true, message: 'Vui lòng chọn đường' }]}
-            >
-              <Input placeholder="Mô tả đường đi" />
-            </Form.Item>
-          </Col></Row>
+              <Form.Item
+                name="road"
+                label="Đường đi"
+                rules={[{ required: true, message: 'Vui lòng chọn đường' }]}
+              >
+                <Input placeholder="Mô tả đường đi" />
+              </Form.Item>
+            </Col></Row>
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item
