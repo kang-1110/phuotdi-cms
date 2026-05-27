@@ -18,8 +18,8 @@ export const MainLayout: React.FC = () => {
   return (
     <Layout style={{ height: '100vh' }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="w-32 h-auto">
-          <img className="w-32 h-auto" src="public/PhuotDiLogo.png" alt="Logo" />
+        <div className="w-full h-auto px-4 py-2">
+          <img className="w-full h-auto" src="public/PhuotDiLogo.png" alt="Logo" />
         </div>
         <Menu
           theme="dark"

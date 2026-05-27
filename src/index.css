@@ -1,8 +1,7 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
-@import "./styles/lucide-global.css";
-@import "./styles/style.css";
-@import "tw-animate-css";
+/* @plugin "@tailwindcss/typography"; */
+/* @import "./styles/style.css"; */
+/* @import "tw-animate-css"; */
 
 html,
 body,
@@ -132,7 +131,6 @@ body,
   }
 }
 
-input,
-textarea {
+body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }

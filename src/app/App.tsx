@@ -7,7 +7,7 @@ import router from "./router/router";
 
 export default function App() {
     const appStore = useAppStore();
-    const userInfo = useGetAdminUserInfo(appStore.isAuthenticated);
+    // const userInfo = useGetAdminUserInfo(appStore.isAuthenticated);
     // const { data: assetUrl } = useGetAssetURL();
     // useEffect(() => {
     //     if (assetUrl) {
@@ -16,11 +16,11 @@ export default function App() {
     //     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [assetUrl]);
     console.log(appStore)
-    useEffect(() => {
-        if (userInfo.data && userInfo.data !== appStore.userInfo) {
-            appStore.setUserInfo(userInfo.data);
-        }
-    }, [userInfo.data, appStore]);
+    // useEffect(() => {
+    //     if (userInfo.data && userInfo.data !== appStore.userInfo) {
+    //         appStore.setUserInfo(userInfo.data);
+    //     }
+    // }, [userInfo.data, appStore]);
 
     return <RouterProvider router={router} />;
 }
