@@ -14,128 +14,131 @@ interface IOpenMode {
 }
 const LocationBlog = () => {
     const options = {
-    timeZone: "Asia/Ho_Chi_Minh",
-    day: "2-digit" as const,
-    month: "2-digit" as const,
-    year: "numeric" as const
-};
-const columns: ColumnType<any>[] = [
-    {
-        title: 'Mã bài viết',
-        dataIndex: 'id',
-        key: 'id',
-        fixed: 'left',
-        render: (text: string) => <p style={{ width: "80px" }}>{text}</p>,
-    },
-    {
-        title: 'Tiêu đề',
-        dataIndex: 'title',
-        key: 'title',
-        fixed: 'left',
-        render: (text: string) => <span className="block" style={{ width: "200px" }}>{text}</span>,
+        timeZone: "Asia/Ho_Chi_Minh",
+        day: "2-digit" as const,
+        month: "2-digit" as const,
+        year: "numeric" as const
+    };
+    const columns: ColumnType<any>[] = [
+        {
+            title: 'Mã bài viết',
+            dataIndex: 'id',
+            key: 'id',
+            fixed: 'left',
+            render: (text: string) => <p style={{ width: "80px" }}>{text}</p>,
+        },
+        {
+            title: 'Tiêu đề',
+            dataIndex: 'title',
+            key: 'title',
+            fixed: 'left',
+            render: (text: string) => <span className="block" style={{ width: "200px" }}>{text}</span>,
 
-    },
-    {
-        title: 'Nội dung',
-        dataIndex: 'content',
-        key: 'content',
-        render: (text: string) => <span className="block" style={{ width: "300px" }}>{text}</span>,
+        },
+        {
+            title: 'Nội dung',
+            dataIndex: 'content',
+            key: 'content',
+            render: (text: string) => <span className="block" style={{ width: "300px" }}>{text}</span>,
 
-    },
-    {
-        title: 'Hình ảnh',
-        dataIndex: 'photos',
-        key: 'photos',
-        render: (urls: string[]) => <span className="block" style={{ width: "200px" }}>{urls.length > 0 ? urls.map((url) => <img src={url} alt="Image" style={{ width: '100px', height: '100px', objectFit: 'cover' }} />) : 'No image'}</span>,
-
-    },
-    {
-        title: 'Vị trí',
-        dataIndex: 'position',
-        key: 'position',
-        render: (text: string) => <span className="block break-all" style={{ width: "200px" }}><a target="_blank" href={text} rel="noopener noreferrer">{text}</a></span>,
-
-    },
-    {
-        title: 'Đường đi chính',
-        dataIndex: 'road',
-        key: 'road',
-        render: (text: string) => <span className="block" style={{ width: "100px" }}>{text}</span>,
-
-    },
-    {
-        title: 'Xuất phát',
-        dataIndex: 'startingId',
-        key: 'startingId',
-        render: (text: string) => <span className="block break-all" style={{ width: "200px" }}><a target="_blank" href={text} rel="noopener noreferrer">{text}</a></span>,
-
-    },
-    {
-        title: 'Kết thúc',
-        dataIndex: 'destinationId',
-        key: 'destinationId',
-        render: (text: string) => <span className="block break-all" style={{ width: "200px" }}><a target="_blank" href={text} rel="noopener noreferrer">{text}</a></span>,
-
-    },
-    {
-        title: 'Tags (Địa điểm đi qua)',
-        dataIndex: 'locationTags',
-        key: 'locationTags',
-        render: (tags: string[]) => <span className="flex flex-row gap-1" style={{ width: "200px" }}>{tags.length > 0 ? tags.map((tag) =>
-            <Tag key={tag} color="#2db7f5" variant="outlined">
-                {tag}
-            </Tag>
-        ) : 'No tags'}
-        </span>
-    },
-    {
-        title: 'Trạng thái',
-        dataIndex: 'status',
-        key: 'status',
-        fixed: 'end',
-        render: (s: number) => <Tag key={s} color={STATUS_COLORS[s]}>{STATUS_DISPLAY[s]}</Tag>,
-
-    },
-    {
-        title: 'Ngày tạo',
-        dataIndex: 'createdAt',
-        key: 'createdAt',
-        render: (d: Date) => <span>{`${new Date(d).toLocaleString("vi-VN", options)}`}</span>,
-
-    },
-    {
-        title: 'Ngày cập nhật',
-        dataIndex: 'updatedAt',
-        key: 'updatedAt',
-        render: (d: Date) => <span>{`${new Date(d).toLocaleString("vi-VN", options)}`}</span>,
-
-    },
-    {
-        title: 'Người tạo',
-        dataIndex: 'createdBy',
-        key: 'createdBy',
-        render: (text: string) => <a>{text}</a>,
-
-    },
-    {
-        title: 'Người cập nhật',
-        dataIndex: 'updatedBy',
-        key: 'updatedBy',
-        render: (text: string) => <a>{text}</a>,
-    },
-    {
-        title: 'Hành động',
-        dataIndex: 'action',
-        key: 'action',
-        fixed: 'end',
-        render: (item) =>
-            <span className="flex items-center gap-2">
-                <Button variant="solid" color="geekblue" shape="circle" icon={<FileSearchOutlined />} />
-                <Button variant="solid" color="orange" shape="circle" icon={<EditOutlined />} onClick={() => setOpenMode({ ...openMode, isOpen: true, isEdit: true, id: item })} />
-                <Button variant="solid" color="red" shape="circle" icon={<DeleteOutlined />} />
+        },
+        {
+            title: 'Hình ảnh',
+            dataIndex: 'photos',
+            key: 'photos',
+            render: (urls: string[]) => <span className="flex flex-row gap-2" style={{ width: "200px" }}>{urls.length > 0 ?
+                urls.map((url) =>
+                    <img key={url} src={url} alt="Image" style={{ width: '100px', height: '100px', objectFit: 'cover' }} />) : 'No image'}
             </span>,
-    }
-];
+
+        },
+        {
+            title: 'Vị trí',
+            dataIndex: 'position',
+            key: 'position',
+            render: (text: string) => <span className="block break-all" style={{ width: "200px" }}><a target="_blank" href={text} rel="noopener noreferrer">{text}</a></span>,
+
+        },
+        {
+            title: 'Đường đi chính',
+            dataIndex: 'road',
+            key: 'road',
+            render: (text: string) => <span className="block" style={{ width: "100px" }}>{text}</span>,
+
+        },
+        {
+            title: 'Xuất phát',
+            dataIndex: 'startingId',
+            key: 'startingId',
+            render: (text: string) => <span className="block break-all" style={{ width: "200px" }}><a target="_blank" href={text} rel="noopener noreferrer">{text}</a></span>,
+
+        },
+        {
+            title: 'Kết thúc',
+            dataIndex: 'destinationId',
+            key: 'destinationId',
+            render: (text: string) => <span className="block break-all" style={{ width: "200px" }}><a target="_blank" href={text} rel="noopener noreferrer">{text}</a></span>,
+
+        },
+        {
+            title: 'Tags (Địa điểm đi qua)',
+            dataIndex: 'locationTags',
+            key: 'locationTags',
+            render: (tags: string[]) => <span className="flex flex-row gap-1 flex-wrap" style={{ width: "200px" }}>{tags.length > 0 ? tags.map((tag) =>
+                <Tag key={tag} color="#2db7f5" variant="outlined">
+                    {tag}
+                </Tag>
+            ) : 'No tags'}
+            </span>
+        },
+        {
+            title: 'Trạng thái',
+            dataIndex: 'status',
+            key: 'status',
+            fixed: 'end',
+            render: (s: number) => <Tag key={s} color={STATUS_COLORS[s]}>{STATUS_DISPLAY[s]}</Tag>,
+
+        },
+        {
+            title: 'Ngày tạo',
+            dataIndex: 'createdAt',
+            key: 'createdAt',
+            render: (d: Date) => <span>{`${new Date(d).toLocaleString("vi-VN", options)}`}</span>,
+
+        },
+        {
+            title: 'Ngày cập nhật',
+            dataIndex: 'updatedAt',
+            key: 'updatedAt',
+            render: (d: Date) => <span>{`${new Date(d).toLocaleString("vi-VN", options)}`}</span>,
+
+        },
+        {
+            title: 'Người tạo',
+            dataIndex: 'createdBy',
+            key: 'createdBy',
+            render: (text: string) => <a>{text}</a>,
+
+        },
+        {
+            title: 'Người cập nhật',
+            dataIndex: 'updatedBy',
+            key: 'updatedBy',
+            render: (text: string) => <a>{text}</a>,
+        },
+        {
+            title: 'Hành động',
+            dataIndex: 'action',
+            key: 'action',
+            fixed: 'end',
+            render: (item) =>
+                <span className="flex items-center gap-2">
+                    <Button variant="solid" color="geekblue" shape="circle" icon={<FileSearchOutlined />} />
+                    <Button variant="solid" color="orange" shape="circle" icon={<EditOutlined />} onClick={() => setOpenMode({ ...openMode, isOpen: true, isEdit: true, id: item })} />
+                    <Button variant="solid" color="red" shape="circle" icon={<DeleteOutlined />} />
+                </span>,
+        }
+    ];
     const [openMode, setOpenMode] = React.useState<IOpenMode>({
         isEdit: false,
         id: null,
@@ -189,12 +192,12 @@ const columns: ColumnType<any>[] = [
                 </div>
             </div>
             <div>
-                <Table columns={columns} dataSource={LocationBlogList} scroll={{ x: 'max-content', y: 110 * 5 }} />
+                <Table columns={columns} dataSource={LocationBlogList} rowKey={(record) => record.id} scroll={{ x: 'max-content', y: 110 * 5 }} />
             </div>
-            {openMode.isOpen && <LocationBlogCreate isEdit={openMode.isEdit} open={openMode.isOpen} setOpen={(open) => setOpenMode({...openMode, isOpen: open})} />}
+            {openMode.isOpen && <LocationBlogCreate isEdit={openMode.isEdit} open={openMode.isOpen} setOpen={(open) => setOpenMode({ ...openMode, isOpen: open })} />}
         </div>
     )
-    
+
 }
 
 export default LocationBlog

@@ -27,8 +27,9 @@ export const MainLayout: React.FC = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={['1']}
+          style={{ paddingTop: '16px' }}
         >{LAYOUT_PAGE_DATA.filter(data => data.isDisplay).map((data) => (
-          <Menu.Item key={data.key} icon={React.createElement(data.icon)}>
+          <Menu.Item key={data.key} icon={React.createElement(data.icon)} style={{ display: 'flex', alignItems: 'center' }}>
             <Link to={data.route} className="text-lg">{data.label}</Link>
           </Menu.Item>
         ))}</Menu>
@@ -52,7 +53,7 @@ export const MainLayout: React.FC = () => {
               email="nguyenvana@example.com"
               avatarUrl="https://randomuser.me/api/portraits/men/1.jpg"
               onLogout={() => navigate('/login')}
-              onClickAvatar={() => console.log("Avatar clicked")} />
+              onClickAvatar={() => navigate('/profile/edit')} />
           </Space>
         </Header>
         <Content

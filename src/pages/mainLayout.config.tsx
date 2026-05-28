@@ -1,4 +1,4 @@
-import { UserOutlined, AreaChartOutlined, ProfileOutlined, CustomerServiceOutlined, SettingOutlined } from "@ant-design/icons";
+import { UserOutlined, AreaChartOutlined, ProfileOutlined, CustomerServiceOutlined, SettingOutlined, EnvironmentOutlined } from "@ant-design/icons";
 import type { AntdIconProps } from "@ant-design/icons/es/components/AntdIcon";
 
 interface PageData {
@@ -22,6 +22,13 @@ export const LAYOUT_PAGE_DATA: PageData[] = [
         label: "Bài viết",
         route: "/location-blogs",
         icon: ProfileOutlined,
+        isDisplay: true
+    },
+        {
+        key: "location",
+        label: "Địa điểm",
+        route: "/locations",
+        icon: EnvironmentOutlined,
         isDisplay: true
     },
     {
