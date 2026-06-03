@@ -3,6 +3,7 @@ import React, {
   // useState 
 } from 'react';
 import { Button, Col, Drawer, Form, Input, Row, Select, Space } from 'antd';
+import MiniMap from '@/components/MiniMap/MiniMap';
 // import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 
 interface IProps {
@@ -61,6 +62,7 @@ const LocationCreate: React.FC<IProps> = ({ isEdit = false, open, setOpen = () =
         styles={{
           body: {
             paddingBottom: 80,
+            transform: 'translate(0, 0)'
           },
         }}
         footer={
@@ -92,35 +94,11 @@ const LocationCreate: React.FC<IProps> = ({ isEdit = false, open, setOpen = () =
                 label="Vị trí"
                 rules={[{ required: true, message: 'Vui lòng chọn vị trí' }]}
               >
-                <Select
-                  placeholder="Vui lòng chọn vị trí"
-                  options={[
-                    { label: 'Xiaoxiao Fu', value: 'xiao' },
-                    { label: 'Maomao Zhou', value: 'mao' },
-                  ]}
-                />
+                <MiniMap />
               </Form.Item>
-            </Col>          </Row>
-          {/* <div>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={15}
-        onClick={handleMapClick}
-      >
+            </Col>
+          </Row>
 
-        {selectedPosition && (
-          <Marker position={selectedPosition} />
-        )}
-      </GoogleMap>
-
-      {selectedPosition && (
-        <div style={{ marginTop: '10px' }}>
-          <b>Vị trí đã chọn:</b> 
-          Vĩ độ: {selectedPosition.lat.toFixed(6)}, Kinh độ: {selectedPosition.lng.toFixed(6)}
-        </div>
-      )}
-    </div> */}
 
           <Row gutter={16}>
             <Col span={12}>
